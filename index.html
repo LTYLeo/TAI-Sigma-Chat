@@ -924,11 +924,11 @@
             <div class="header-right">
                 <div class="model-selector-wrapper">
                     <select id="model-select" class="model-selector">
+                        <option value="ESFT GTC-2">ESFT GTC-2</option>
                         <option value="GTC-2 Large (Base)">GTC-2 Large (Base)</option>
-                        <option value="GTC-2 Medium (Base)">GTC-2 Medium (Base)</option>
                     </select>
                     <span id="model-badge" class="release-badge">Release</span>
-                    <div id="model-description" class="model-description">A large size of GTC-2 Series Language Base Model which offers better text completion</div>
+                    <div id="model-description" class="model-description">Early Supervised Fine-Tuned GTC-2 model for improved conversational performance</div>
                 </div>
             </div>
         </div>
@@ -1017,7 +1017,7 @@
 
     <script>
     // API基础URL
-    const API_BASE_URL = 'https://8c6081b1361d.ngrok-free.app';
+    const API_BASE_URL = 'https://565de05071cd.ngrok-free.app';
     
     // DOM元素
     const sidebar = document.getElementById('sidebar');
@@ -1056,8 +1056,8 @@
     
     // 模型描述映射
     const modelDescriptions = {
-        'GTC-2 Large (Base)': 'A large size of GTC-2 Series Language Base Model which offers better text completion',
-        'GTC-2 Medium (Base)': 'A medium size of GTC-2 Series Language Base Model'
+        'ESFT GTC-2': 'Early Supervised Fine-Tuned GTC-2 model for improved conversational performance',
+        'GTC-2 Large (Base)': 'A large size of GTC-2 Series Language Base Model which offers better text completion'
     };
     
     // 初始化
@@ -1197,18 +1197,16 @@
         const selectedModel = modelSelect.value;
         
         // 更新徽章
-        //modelBadge.className = 'beta-badge';
-        //modelBadge.textContent = 'Public Beta';
-        if (selectedModel === 'GTC-2 Large (Base)') {
+        if (selectedModel === 'ESFT GTC-2') {
             modelBadge.className = 'release-badge';
             modelBadge.textContent = 'Release';
-        } else if (selectedModel === 'GTC-2 Medium (Base)') {
+        } else if (selectedModel === 'GTC-2 Large (Base)') {
             modelBadge.className = 'release-badge';
             modelBadge.textContent = 'Release';
         }
-        
-        // 更新描述
-        modelDescription.textContent = modelDescriptions[selectedModel];
+            
+            // 更新描述
+            modelDescription.textContent = modelDescriptions[selectedModel];
     }
     
     // 处理输入变化
@@ -1686,7 +1684,7 @@
         try {
             // 获取当前选择的模型
             const selectedModel = modelSelect.value;
-            const modelType = selectedModel.includes('Medium') ? 'medium' : 'large';
+            const modelType = selectedModel.includes('Large') ? 'large' : 'esft';
             
             // 准备请求头
             const headers = {
